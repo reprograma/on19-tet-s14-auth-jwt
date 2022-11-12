@@ -1,19 +1,10 @@
-require('dotenv').config({silent: true})
+const mongoose = require ("mongoose");
 
-const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017/reprograma", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
 
-const connect = async () => {
-  try {
-    mongoose.connect(process.env.MONGODB_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("Database connected");
-  } catch (error) {
-    console.log(error);
-  }
-};
+let db = mongoose.connection;
 
-module.exports = {
-  connect,
-};
+module.exports = db;

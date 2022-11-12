@@ -1,38 +1,24 @@
-const ColaboradorasModel = require("../models/colaboradoras");
+const colaboradoras = require("../models/colaboradoras");
 
-const findAllColaboradoras = async (req, res) => {
-  try {
-    const allColaboradoras = await ColaboradorasModel.find(); 
-    res.status(200).json(allColaboradoras);
-  } catch {
-    console.log(error);
-    res.status(500).json({ message: error.message})
-  };
+const getAll = (req, res) => {
+  console.log(req.url);
+  colaboradoras.find(function (err, colaboradoras) {
+    res.status(200).send(colaboradoras);
+  });
 };
 
-const addNewColaboradora = async (req, res) => {
-  try {
-    const {
-      name,
-      email,
-      password,
-    } = req.body;
-    const newColaboradora = new ColaboradorasModel({
-      name,
-      email,
-      password,
-    });
+const postColaboradora = (req, res) => {
+  console.log(req.body);
 
-    const savedColaboradora = await newColaboradora.save();
+  let colaboradora = new colaboradoras(req.body);
+  colaboradora.save(function (err) {
+    if (err) res.status(500).send({ message: err.message });
 
-    res.status(201).json({ message: "Nova colaboradora resgistrada com sucesso"})
-  } catch (error) {
-    console.error(error);
-    res.status(500).json(error.message);
-  };
+    res.status(201).send(colaboradora.toJSON());
+  });
 };
 
 module.exports = {
-  findAllColaboradoras,
-  addNewColaboradora,
-};
+    getAll,
+    postColaboradora
+}
