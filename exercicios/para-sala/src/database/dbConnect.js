@@ -1,10 +1,11 @@
-const mongoose = require ("mongoose");
+const mongoose = require('mongoose');
 
-mongoose.connect("mongodb://localhost:27017/reprograma", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+const password = 'UzMYVD7HVeKFgLLE';
 
-let db = mongoose.connection;
+mongoose.connect(
+  `mongodb+srv://admin:${password}@cluster0.1vuycki.mongodb.net/reprograma` 
+);
+
+const db = mongoose.connection;
 
 module.exports = db;
