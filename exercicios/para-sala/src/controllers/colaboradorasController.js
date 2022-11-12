@@ -1,5 +1,4 @@
 const colaboradoras = require("../models/colaboradoras");
-
 const getAll = (req, res) => {
   console.log(req.url);
   colaboradoras.find(function (err, colaboradoras) {
