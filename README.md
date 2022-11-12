@@ -18,9 +18,9 @@ O que veremos na aula de hoje?
 * [Criptografia](#Tema1)
 Compreender a função e aplicabilidade da criptografia, Tokens e Hash.
 * [Autenticação](#Tema2)
-Conhecer o processo de autenticação, possibilitanto reconhecer e reproduzir o processo nas aplicações.
+Conhecer o processo de autenticação, possibilitando reconhecer e reproduzir o processo nas aplicações.
 * [Autorização](#Tema3)
-Conhecer as etapas e necessidades da pática de autorização como fator de segurança na construção de aplicações.
+Conhecer as etapas e necessidades da prática de autorização como fator de segurança na construção de aplicações.
 
 ## Conteúdo
 ### Criptografia 
