@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 
-const getAll = verifyToken; async (req, res) => {
+const getAll = async (req, res) => {
   try{
     const allCollaborators = await contributorModel.find();
     res.status(200).send(allCollaborators);
@@ -80,7 +80,6 @@ const login = (req, res) => {
 
 module.exports = {
     getAll,
-    verifyToken,
     postContributor,
     login
 }
