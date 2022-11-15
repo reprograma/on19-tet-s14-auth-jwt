@@ -16,7 +16,7 @@ const getAll = async (req, res) => {
 function verifyToken(req,res,next){
     const authHeader = req.get("authorization");
     const token = authHeader.split(" ")[1];
-
+    
     if (!token) {
       return res.status(401).send({ message: "O Token é inválido!" });
     }
@@ -80,6 +80,7 @@ const login = (req, res) => {
 
 module.exports = {
     getAll,
+    verifyToken,
     postContributor,
     login
 }
