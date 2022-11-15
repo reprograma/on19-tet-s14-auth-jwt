@@ -50,7 +50,7 @@ const login = (req, res) =>{
       return res.status(403).send(`Esta senha está incorreta`)
     }
     const token = jwt.sign({ email: req.body.email }, SECRET);
-    return res.status(200).send(to)
+    return res.status(200).send(token)
   })
 }
 
