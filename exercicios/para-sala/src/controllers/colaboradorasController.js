@@ -41,8 +41,8 @@ const postColaboradora = (req, res) => {
   });
 };
 
-const login = (req, res) => {
-  colaboradoras.findOne({ email: req.body.email }, function(error, colaboradoras) {
+const login = (req,res) => {
+  colaboradoras.findOne({ email: req.body.email }, function(error, colaboradora) {
     if(!colaboradoras) {
       return res.status(404).send(`Não localizamos o email ${req.body.email}`);
     }
