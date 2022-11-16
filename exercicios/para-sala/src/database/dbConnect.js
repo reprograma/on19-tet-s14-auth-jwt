@@ -6,6 +6,5 @@ mongoose.connect(DATABASE_URI, {
   useUnifiedTopology: true
 })
 
-let db = mongoose.connection;
 
 module.exports = db;
