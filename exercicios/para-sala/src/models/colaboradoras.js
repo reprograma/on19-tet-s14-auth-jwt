@@ -6,7 +6,7 @@ const colaboradorasSchema = new mongoose.Schema({
     password: { type: String },
 },{
     versionKey: false
-})
+});
 
 const colaboradoras = mongoose.model('colaboradoras', colaboradorasSchema);
 
