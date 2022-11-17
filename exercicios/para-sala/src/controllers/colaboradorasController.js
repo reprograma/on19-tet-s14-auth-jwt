@@ -88,5 +88,5 @@ const login = (req, res) => {
 module.exports = {
   getAll,
   postColaboradora,
-  login
+  login,
 }
