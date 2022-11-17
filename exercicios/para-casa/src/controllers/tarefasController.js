@@ -1,4 +1,4 @@
-const colaboradoras = require("../models/colaboradoras");
+const tarefas = require("../models/tarefas");
 const SECRET = process.env.SECRET;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -19,43 +19,43 @@ const getAll = (req, res) => {
   if (err) return res.status(401).send("não autorizado");
 
   console.log(req.url);
-  colaboradoras.find(function (err, colaboradoras) {
-    res.status(200).send(colaboradoras);
+  tarefas.find(function (err, tarefas) {
+    res.status(200).send(tarefas);
   });
 };
 
-const postColaboradora = (req, res) => {
+const postTarefa = (req, res) => {
   const senhaComHash = bcrypt.hashSync(req.body.password, 10);
   req.body.password = senhaComHash;
 
-  let colaboradora = new colaboradoras(req.body);
-  colaboradora.save(function (err) {
+  let tarefa = new tarefas (req.body);
+  tarefa.save(function (err) {
     if (err) res.status(500).send({ message: err.message });
 
-    res.status(201).send(colaboradora.toJSON());
+    res.status(201).send(tarefa.toJSON());
   });
 };
 
 const login = (req, res) => {
-  colaboradoras.findOne(
-    { email: req.body.email },
-    function (error, colaboradora) {
-      if (!colaboradora) {
+  tarefas.findOne(
+    { nomeColaboradora: req.body.nomeColaboradora },
+    function (error, tarefa) {
+      if (!tarefa) {
         return res
           .status(404)
-          .send(`Não localizamos o email ${req.body.email}`);
+          .send(`Não localizamos a colaboradoira ${req.body.nomeColaboradora}`);
       }
 
       const senhaValida = bcrypt.compareSync(
         req.body.password,
-        colaboradora.password
+        tarefa.password
       );
 
       if (!senhaValida) {
         return res.status(403).send(`Esta senha está incorreta`);
       }
 
-      const token = jwt.sign({ email: req.body.email}, SECRET);
+      const token = jwt.sign({ nomeColaboradora: req.body.nomeColaboradora}, SECRET);
         return res.status(200).send(token);
     }
   );
@@ -63,6 +63,6 @@ const login = (req, res) => {
 
 module.exports = {
   getAll,
-  postColaboradora,
+  postTarefa,
   login
 };

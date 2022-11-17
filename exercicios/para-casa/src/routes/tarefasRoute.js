@@ -1,11 +1,11 @@
-const controller = require("../controllers/colaboradorasController");
+const controller = require("../controllers/tarefasController");
 const express = require("express");
 const router = express.Router();
 
 
 router.get("/", controller.getAll);
-router.get("/colaboradoras", controller.getAll);
-router.post("/", controller.postColaboradora);
+router.get("/tarefas", controller.getAll);
+router.post("/", controller.postTarefa);
 router.post("/login", controller.login);
 
 module.exports = router;

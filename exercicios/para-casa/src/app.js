@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require('express');
 const cors = require("cors");
 const index = require("./routes/index");
-const colaboradoras = require("./routes/colaboradorasRoute");
+const tarefas = require("./routes/tarefasRoute");
 const db = require ("./database/dbConnect");
 
 
@@ -20,6 +20,6 @@ app.use(cors());
 
 
 app.use("/", index);
-app.use("/colaboradoras", colaboradoras)
+app.use("/tarefas", tarefas)
 
 module.exports = app;
