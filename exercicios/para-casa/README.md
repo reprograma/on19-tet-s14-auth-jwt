@@ -1,5 +1,12 @@
 # Exercício de Casa 🏠 
 
+- Rota Post: Cadastrar nova tarefa e novo login e senha
+- Rota Get: Acessar todas as tarefas do banco de dados, somente com autenticação (token no Header)
+- Rota Post 2 : Gerar token para acessar o banco de dados
+
+- Armazenar a senha no banco de dados de forma segura com hash 
+
+
 ## Atividade para casa
 
 A atividade será criar uma nova rota no models de tarefas.js, fazer todas as etapas de autenticação no passo a passo acima. A Schema de tarefas será na seguinte estrutura:

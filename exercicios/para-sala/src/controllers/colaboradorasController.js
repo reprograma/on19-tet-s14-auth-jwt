@@ -5,8 +5,9 @@ const bcrypt = require("bcrypt");
 
 
 const getAll = (req, res) => {
-  const authHeader = req.get(`authorization`);
-  const token = authHeader.split(' ')[1];
+  const authHeader = req.get("Authorization");
+  const token = authHeader?.split(" ")[1] ?? ("Não autorizado");
+  //const token = authHeader.split(' ')[1];
   console.log(`Meu header:`, token);
 
   if(!token){
@@ -43,11 +44,11 @@ const postColaboradora = (req, res) => {
 
 const login = (req,res) => {
   colaboradoras.findOne({ email: req.body.email }, function(error, colaboradora) {
-    if(!colaboradoras) {
+    if(!colaboradora) {
       return res.status(404).send(`Não localizamos o email ${req.body.email}`);
     }
 
-    const senhaValida = bcrypt.compareSync(req.body.password, colaboradoras.password);
+    const senhaValida = bcrypt.compareSync(req.body.password, colaboradora.password);
 
     if(!senhaValida) {
       return res.status(403).send(`Esta senha está incorreta`)
