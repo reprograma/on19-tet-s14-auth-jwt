@@ -7,7 +7,7 @@ mongoose.connect (DATABASE_MONGO, {
 })
 
 mongoose.connect(
-  `mongodb+srv://admin:${password}@cluster0.1vuycki.mongodb.net/reprograma` 
+  `mongodb+srv://djeisly:${Djeisly}@cluster0.imdlyva.mongodb.net/reprograma` 
 );
 
 const db = mongoose.connection;
