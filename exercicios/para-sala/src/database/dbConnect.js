@@ -7,14 +7,14 @@ mongoose.connect(DATABASE_MONGO, {
   useUnifiedTopology: true
 })
 
-const mongoose = require('mongoose');
-
-const password = 'UzMYVD7HVeKFgLLE';
 
 
-mongoose.connect(
-  `mongodb+srv://admin:${password}@cluster0.1vuycki.mongodb.net/reprograma` 
-);
+//const password = 'UzMYVD7HVeKFgLLE';
+
+
+//mongoose.connect(
+  //`mongodb+srv://admin:${password}@cluster0.1vuycki.mongodb.net/reprograma` 
+//);
 
 const db = mongoose.connection;
 
