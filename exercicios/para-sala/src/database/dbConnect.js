@@ -1,6 +1,7 @@
+const DATABASE_MONGO = process.env.DATABASE_MONGO;
 const mongoose = require ("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/reprograma", {
+mongoose.connect(DATABASE_MONGO, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
