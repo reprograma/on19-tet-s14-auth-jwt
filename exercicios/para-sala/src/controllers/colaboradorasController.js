@@ -5,23 +5,23 @@ const bcrypt = require("bcrypt");
 
 
 const getAll = (req, res) => {
-  const authHeader = req.get(`authorization`);
-  const token = authHeader.split(' ')[1];
+  const authHeader = req.get("Authorization");
+  const token = authHeader?.split(" ")[1]??("Not authorized");
   console.log(`Meu header:`, token);
 
   if(!token){
-    return res.status(401)
-  }
+    return res.status(401);
+  };
 
-  const err = jwt.verify(token,SECRET,function(error){
+  const err = jwt.verify(token, SECRET, function(error){
     if(error) return error 
-  })
+  });
   
-  if (err) return res.status(401).send("não autorizado")
+  if (err) return res.status(401).send("Not authorized")
 
   console.log(req.url);
   colaboradoras.find(function (err, colaboradoras) {
-    res.status(200);
+    res.status(200).send(colaboradoras);
   });
 };
 
@@ -43,11 +43,11 @@ const postColaboradora = (req, res) => {
 
 const login = (req,res) => {
   colaboradoras.findOne({ email: req.body.email }, function(error, colaboradora) {
-    if(!colaboradoras) {
+    if(!colaboradora) {
       return res.status(404).send(`Não localizamos o email ${req.body.email}`);
-    }
+    };
 
-    const senhaValida = bcrypt.compareSync(req.body.password, colaboradoras.password);
+    const senhaValida = bcrypt.compareSync(req.body.password, colaboradora.password);
 
     if(!senhaValida) {
       return res.status(403).send(`Esta senha está incorreta`)
