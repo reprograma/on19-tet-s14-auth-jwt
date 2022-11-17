@@ -4,9 +4,10 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 
+
 const getAll = (req, res) => {
   const authHeader = req.get('authorization');
-  const token = authHeader.split(' ')[1];
+  const token = authHeader?.split(" ")[1] ?? ("Não autorizado"); 
   console.log(`Meu header:`, token);
 
   if (!token) {
