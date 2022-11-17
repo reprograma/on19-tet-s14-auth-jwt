@@ -43,11 +43,11 @@ const postColaboradora = (req, res) => {
 
 const login = (req,res) => {
   colaboradoras.findOne({ email: req.body.email }, function(error, colaboradora) {
-    if(!colaboradoras) {
+    if(!colaboradora) {
       return res.status(404).send(`Não localizamos o email ${req.body.email}`);
     }
 
-    const senhaValida = bcrypt.compareSync(req.body.password, colaboradoras.password);
+    const senhaValida = bcrypt.compareSync(req.body.password, colaboradora.password);
 
     if(!senhaValida) {
       return res.status(403).send(`Esta senha está incorreta`)
