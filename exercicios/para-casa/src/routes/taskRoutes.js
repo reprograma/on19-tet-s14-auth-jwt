@@ -1,9 +1,9 @@
-const controller = require("../controllers/contributorController")
+const controller = require("../controllers/taskController")
 const express = require("express")
 const router = express.Router();
 
 router.get("/", controller.verifyToken, controller.getAll);
-router.post("/", controller.postContributor);
+router.post("/", controller.postTask);
 router.post("/login", controller.login);
 
 

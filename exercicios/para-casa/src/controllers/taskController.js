@@ -1,4 +1,4 @@
-const contributorModel = require("../models/contributorModel");
+const taskModel = require("../models/taskModel");
 const SECRET = process.env.SECRET
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -6,8 +6,8 @@ const bcrypt = require("bcrypt");
 
 const getAll = async (req, res) => {
   try{
-    const allCollaborators = await contributorModel.find();
-    res.status(200).send(allCollaborators);
+    const allTasks = await taskModel.find();
+    res.status(200).send(allTasks);
   }catch (error){
       res.status(500).send({message: error.message})
   }
@@ -31,25 +31,25 @@ function verifyToken(req,res,next){
   } 
 }
 
-const postContributor = async (req, res) => {
+const postTask = async (req, res) => {
   try{
   const passwordwithHash = bcrypt.hashSync(req.body.password,10)
   req.body.password = passwordwithHash;
 
-  const { nameContributor, description, completed, email, password } = req.body;
+  const { nameTask, description, completed, password } = req.body;
 
-  const newContributor = new contributorModel({
-    nameContributor,description, completed, email, password
+  const newTask = new taskModel({
+    nameTask,description, completed, password
   });
 
-  const contributorExists = await contributorModel.findOne({ email: email });
+  const taskExists = await taskModel.findOne({ nameTask: nameTask });
 
-  if (contributorExists) {
-    return res.status(422).send({ message: "Email already registered, please enter another one" });
+  if (taskExists) {
+    return res.status(422).send({ message: "Task name already registered, please enter another one" });
   }
 
-  const savedContributor = await newContributor.save();
-      res.status(200).send({message: "New contributor successfully added", savedContributor
+  const savedTask = await newTask.save();
+      res.status(200).send({message: "New task successfully added", savedTask: savedTask
     });
     }catch (error) {
         res.status(500).send({message: error.message});
@@ -58,12 +58,12 @@ const postContributor = async (req, res) => {
 
 const login = (req, res) => {
   try{
-    contributorModel.findOne({email: req.body.email}, function(error, contributor){
-      if(!contributor){
-        return res.status(404).send(`E-mail ${req.body.email} não cadastrado`)
+    taskModel.findOne({nameTask: req.body.nameTask}, function(error, task){
+      if(!task){
+        return res.status(404).send(`Task ${req.body.nameTask} not found`)
       }
   
-      const validpassword = bcrypt.compareSync(req.body.password, contributor.password)
+      const validpassword = bcrypt.compareSync(req.body.password, task.password)
 
       if(!validpassword){
         return res.status(403).send("Wrong password! Please try again.")
@@ -81,6 +81,6 @@ const login = (req, res) => {
 module.exports = {
     getAll,
     verifyToken,
-    postContributor,
+    postTask,
     login
 }

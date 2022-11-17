@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
-const contributorSchema = new mongoose.Schema(
+const taskSchema = new mongoose.Schema(
     {
         _id:{
             type: mongoose.Schema.Types.ObjectId,
             default: mongoose.Types.ObjectId
         },
-        nameContributor:{
+        nameTask:{
             type: String,
             required: true
         },
@@ -18,10 +18,6 @@ const contributorSchema = new mongoose.Schema(
         },
         completed:{
             type: Boolean,
-            required: true
-        },
-        email: {
-            type: String,
             required: true
         },
         password: {
@@ -36,6 +32,6 @@ const contributorSchema = new mongoose.Schema(
         versionKey: false
     }) 
 
-const contributor = mongoose.model("Contributor", contributorSchema);
+const task = mongoose.model("Task", taskSchema);
 
-module.exports =  contributor
+module.exports =  task
