@@ -4,26 +4,26 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 
-const getAll = (req, res) => {
-  const authHeader = req.get(`authorization`);
-  const token = authHeader.split(' ')[1];
-  console.log(`Meu header:`, token);
-
-  if(!token){
-    return res.status(401)
-  }
-
-  const err = jwt.verify(token,SECRET,function(error){
-    if(error) return error 
-  })
-  
-  if (err) return res.status(401).send("não autorizado")
-
-  console.log(req.url);
-  colaboradoras.find(function (err, colaboradoras) {
-    res.status(200).send(colaboradoras);
-  });
-};
+const getAll = (req, res) => { 
+    const authHeader = req.get(`authorization`); 
+    const token = authHeader.split(' ')[1]; 
+    console.log(`Meu header:`, token); 
+   
+    if(!token){ 
+      return res.status(401) 
+    } 
+   
+    jwt.verify(token,SECRET,function(error){ 
+      if(error){ 
+        return res.status(401).send('Não autorizado') 
+      } 
+    }) 
+   
+    console.log(req.url); 
+    colaboradoras.find(function (_err, colaboradoras) { 
+      res.status(200).send(colaboradoras); 
+    }); 
+  };
 
 
 const postColaboradora = (req, res) => {
@@ -42,7 +42,7 @@ const postColaboradora = (req, res) => {
 };
 
 const login = (req,res) => {
-  colaboradoras.findOne({ email: req.body.email }, function(error, colaboradora) {
+  colaboradoras.findOne({ email: req.body.email }, function(_error, colaboradoras) {
     if(!colaboradoras) {
       return res.status(404).send(`Não localizamos o email ${req.body.email}`);
     }
