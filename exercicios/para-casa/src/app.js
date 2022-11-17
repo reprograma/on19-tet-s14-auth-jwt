@@ -1,9 +1,9 @@
-require('dotenv').config();
+require('dotenv-safe').config();
 const express = require('express');
 const cors = require("cors");
-const index = require("./routes/index");
-const colaboradoras = require("./routes/colaboradorasRoute");
-const db = require ("./database/");
+const index = require("../index");
+const tarefasRoute = require("./routes/tarefasRoute");
+const db = require ("./database/mongooseConnect");
 
 db.on("error", console.log.bind(console, 'Erro de conexão'))
 db.once("open", () => {
@@ -18,6 +18,6 @@ app.use(cors());
 
 
 app.use("/", index);
-app.use("/colaboradoras", colaboradoras)
+app.use("/tarefas", tarefasRoute)
 
 module.exports = app;
