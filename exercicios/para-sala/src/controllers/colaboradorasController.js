@@ -3,10 +3,9 @@ const SECRET = process.env.SECRET
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-
 const getAll = (req, res) => {
   const authHeader = req.get(`authorization`);
-  const token = authHeader.split(' ')[1];
+  const token = authHeader?.split(" ")[1] ?? ("Não autorizado");
   console.log(`Meu header:`, token);
 
   if(!token){
@@ -25,19 +24,17 @@ const getAll = (req, res) => {
   });
 };
 
-
 const postColaboradora = (req, res) => {
   const senhaComHash = bcrypt.hashSync(req.body.password, 10);
   req.body.password = senhaComHash;
 
-  console.log(req.body);
   const colaboradora = new colaboradoras(req.body);
 
   colaboradora.save(function (err) {
     if (err) {
-      return res.status(500)
+      return res.status(500).send({ message: err.message })
     }
-    res.status(201).send(colaboradora.toJSON());
+    return res.status(201).send(colaboradora.toJSON());
   });
 };
 
@@ -58,8 +55,9 @@ const login = (req,res) => {
   })
 }
 
+
 module.exports = {
-    getAll,
-    postColaboradora,
-    login
-}
+  getAll,
+  postColaboradora,
+  login,
+};
