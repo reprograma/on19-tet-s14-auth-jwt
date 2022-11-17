@@ -1,5 +1,3 @@
-# Exercício de Casa 🏠 
-
 ## Atividade para casa
 
 A atividade será criar uma nova rota no models de tarefas.js, fazer todas as etapas de autenticação no passo a passo acima. A Schema de tarefas será na seguinte estrutura:
