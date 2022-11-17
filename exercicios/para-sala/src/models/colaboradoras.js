@@ -9,6 +9,8 @@ const colaboradorasSchema = new mongoose.Schema({
     versionKey: false
 })
 
-const colaboradoras = mongoose.model('colaboradoras', colaboradorasSchema);
+const colaboradoras = mongoose.model('colab', colaboradorasSchema);
 
-module.exports = colaboradoras
+module.exports = {
+  colaboradoras,
+}
