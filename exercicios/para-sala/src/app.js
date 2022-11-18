@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require('express');
 const cors = require("cors");
 const index = require("./routes/index");
@@ -6,7 +7,7 @@ const db = require ("./database/dbConnect");
 
 db.on("error", console.log.bind(console, 'Erro de conexão'))
 db.once("open", () => {
-    console.log('Conexão com o banco feita com sucesso')
+    console.log('Conexão com o banco feita com sucesso!')
 });
 
 
