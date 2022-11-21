@@ -3,20 +3,21 @@ const SECRET = process.env.SECRET
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
+
 const getAll = (req, res) => {
   const authHeader = req.get(`authorization`);
-  const token = authHeader?.split(" ")[1] ?? ("Não autorizado");
+  const token = authHeader.split(' ')[1];
   console.log(`Meu header:`, token);
 
   if(!token){
     return res.status(401)
   }
 
-  const err = jwt.verify(token,SECRET,function(error){
-    if(error) return error 
+  jwt.verify(token,SECRET,function(error){
+    if (error) return res.status(401).send("não autorizado")
   })
   
-  if (err) return res.status(401).send("não autorizado")
+  
 
   console.log(req.url);
   colaboradoras.find(function (err, colaboradoras) {
@@ -24,21 +25,23 @@ const getAll = (req, res) => {
   });
 };
 
+
 const postColaboradora = (req, res) => {
-  const senhaComHash = bcrypt.hashSync(req.body.password, 10);
+  const senhaComHash = bcrypt.hashSync(req.body.password, 2);
   req.body.password = senhaComHash;
 
+  console.log(req.body);
   const colaboradora = new colaboradoras(req.body);
 
   colaboradora.save(function (err) {
     if (err) {
-      return res.status(500).send({ message: err.message })
+      return res.status(500)
     }
-    return res.status(201).send(colaboradora.toJSON());
+    res.status(201).send(colaboradora.toJSON());
   });
 };
 
-const login = (req,res) => {
+const login = (req, res) => {
   colaboradoras.findOne({ email: req.body.email }, function(error, colaboradora) {
     if(!colaboradora) {
       return res.status(404).send(`Não localizamos o email ${req.body.email}`);
@@ -57,7 +60,7 @@ const login = (req,res) => {
 
 
 module.exports = {
-  getAll,
-  postColaboradora,
-  login,
-};
+    getAll,
+    postColaboradora,
+    login
+}

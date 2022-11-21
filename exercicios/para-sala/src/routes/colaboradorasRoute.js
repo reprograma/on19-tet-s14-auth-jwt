@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.get("/", controller.getAll);
-router.post("/", controller.postColaboradora);
+router.post("/novaColaboradora", controller.postColaboradora);
 router.post("/login", controller.login);
 
 module.exports = router;
