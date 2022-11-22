@@ -19,5 +19,6 @@ app.use(cors());
 
 app.use("/", index);
 app.use("/colaboradoras", colaboradoras)
+app.use("/tarefa", tarefa)
 
 module.exports = app;
