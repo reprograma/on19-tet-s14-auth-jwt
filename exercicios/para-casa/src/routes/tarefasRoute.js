@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/", controller.getAll);
 router.get("/tarefas", controller.getAll);
-router.post("/", controller.postTarefas);
-router.post('/login', controller.login);
+router.post("/novaTarefa", controller.postTarefas);
+router.post("/login", controller.login);
 
 module.exports = router;

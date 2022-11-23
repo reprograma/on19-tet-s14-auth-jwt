@@ -17,7 +17,7 @@ const getAll = (req, res) => {
     if (error) return error
   })
 
-  if (err) return res.status(401).send(`Not authorized.`)
+  if (err) return res.status(401).send("Não autorizado")
 
   console.log(req.url);
   tarefas.find(function (err, tarefas) {
@@ -51,29 +51,24 @@ const {descricao, dataInclusao, concluido, nomeColaboradora} = req.body
   });
 };
 
-const login = (req,res) => {
-  tarefas.findOne({ nomeColaboradora: req.body.nomeColaboradora }, function(error, tarefa) { //parametro q guarda email e senha
-    if(!tarefa) {
-  return res.status(404).send(`não localizamos o nome da colaboradora ${req.body.nomeColaboradora}`);
-    }
+const login = async (req, res) => {
+  try {
+    tarefas.findOne({nomeColaboradora: req.body.nomeColaboradora}, function (error, tarefa) {
+      if (!tarefa) {
+        return res.status(404).send(`colaboradora ${req.body.nomeColaboradora} não encontrada`);
+      }
+      const senhaValida = bcrypt.compare(req.body.senha, tarefas.senha);
+      if (!senhaValida) {
+        return res.status(403).send("Senha inválida");
+      }
 
-  const senhaValida = bcrypt.compare(req.body.senha, tarefas.senha, function(err, match){
-    if (err) return res.status(400);
-                else if (match == false) {
-                    return res.json({
-                        success: false,
-                        message: 'Wrong Password'
-                    })
-  }; //comapara a senha utlizada com a senha da pratf em formato de res  
-  
-  if(!senhaValida) {
-    return res.status(403).send(`Esta senha está incorreta`);
-  }
-
-  const token = jwt.sign({ nomeColaboradora: req.body.nomeColaboradora }, SECRET);
-    return res.status(200).send(token)
-  })
- })}
+      const token = jwt.sign({nomeColaboradora: req.body.nomeColaboradora}, SECRET);
+return res.status(200).send(token);
+    });
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  };
+};
 
 module.exports = {
     getAll,
