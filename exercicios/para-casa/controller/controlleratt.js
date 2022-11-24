@@ -1,4 +1,4 @@
-const tarefas = require("../model/atividade");
+const atividadesS = require("../model/atividade");
 const SECRET = process.env.SECRET;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -24,4 +24,22 @@ const getAll = (req, res) => {
     });
   };
 
-  //falta finalizar essa parte
+  //falta finalizar essa parte (testar)
+  const postAtividade = (req, res) => {
+    const senhaHash = bcrypt.hashSync(req.body.password, 10);
+    req.body.password = senhaHash;
+  
+    const exercicio = new atividadesS(req.body);
+    exercicio.save(function (error) {
+      if (error) res.status(500).send({ message: error.message });
+  
+      res.status(201).send(exercicio.toJSON());
+    });
+  };
+  
+  
+  module.exports = {
+    getAll,
+    postAtividade,
+  };
+  
