@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 
 
 const getAll = (req, res) => {
-  const authHeader = req.get(`authorization`);
+ /* const authHeader = req.get(`authorization`);
   const token = authHeader.split(' ')[1];
   console.log(`Meu header:`, token);
 
@@ -17,7 +17,7 @@ const getAll = (req, res) => {
     if(error) return error 
   })
 
-  if (err) return res.status(401).send("não autorizado")
+  if (err) return res.status(401).send("não autorizado")*/
 
   console.log(req.url);
   tarefas.find(function (err, tarefas) {
@@ -26,8 +26,8 @@ const getAll = (req, res) => {
 };
 
 const postTarefa = (req, res) => {
-  const senhaComHash = bcrypt.hashSync(req.body.password, 10);
-  req.body.password = senhaComHash;
+ // const senhaComHash = bcrypt.hashSync(req.body.password, 10);
+ // req.body.password = senhaComHash;
 
   const tarefa1 = new tarefas(req.body);
   tarefa1.save(function (error) {
@@ -37,7 +37,7 @@ const postTarefa = (req, res) => {
   });
 };
 
-const login = (req,res) => {
+/*const login = (req,res) => {
   tarefas.findOne({ nome: req.body.nome }, function(error, tarefas) {
     if(!tarefas) {
       return res.status(404).send(`Nome não localizado ${req.body.nome}`);
@@ -52,10 +52,10 @@ const login = (req,res) => {
     const token = jwt.sign({ nome: req.body.nome }, SECRET);
       return res.status(200).send(token)
   })
-}
+}*/
 
 module.exports = {
   getAll,
   postTarefa,
-  login
+  //login
 };

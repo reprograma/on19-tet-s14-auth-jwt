@@ -4,7 +4,7 @@
   "description": ". \r ---",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watchAll",
     "start": "nodemon server.js"
   },
   "keywords": [],
@@ -19,5 +19,9 @@
     "mongoose": "^6.7.2",
     "nodemon": "^2.0.20",
     "save": "^2.9.0"
+  },
+  "devDependencies": {
+    "jest": "28.1.0",
+    "supertest": "6.2.3"
   }
 }

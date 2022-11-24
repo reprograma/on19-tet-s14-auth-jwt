@@ -4,8 +4,8 @@ const router = express.Router();
 
 
 router.get("/", tarefasController.getAll);
-router.get("/tarefas", tarefasController.getAll);
+//router.get("/tarefas", tarefasController.getAll);
 router.post("/", tarefasController.postTarefa);
-router.post('/login', tarefasController.login);
+//router.post('/login', tarefasController.login);
 
 module.exports = router;

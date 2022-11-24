@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require("cors");
-const index = require("./routes/index");
-const colaboradoras = require("./routes/colaboradorasRoute");
-const tarefas = require("./routes/tarefasRoute")
-const db = require ("./database/dbConnect");
+const index = require("../src/routes/index");
+const colaboradoras = require("../src/routes/colaboradorasRoute");
+const tarefas = require("../src/routes/tarefasRoute")
+const db = require ("../src/database/dbConnect");
 
 db.on("error", console.log.bind(console, 'Erro de conexão'))
 db.once("open", () => {
