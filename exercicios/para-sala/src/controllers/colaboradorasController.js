@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const getAll = (req, res) => {
-  const authHeader = req.get(`authorization`);
+  /*const authHeader = req.get(`authorization`);
   const token = authHeader?.split(" ")[1] ?? ("Não autorizado");
   console.log(`Meu header:`, token);
 
@@ -16,7 +16,7 @@ const getAll = (req, res) => {
     if(error) return error 
   })
   
-  if (err) return res.status(401).send("não autorizado")
+  if (err) return res.status(401).send("não autorizado")*/
 
   console.log(req.url);
   colaboradoras.find(function (err, colaboradoras) {
