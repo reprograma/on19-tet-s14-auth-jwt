@@ -4,7 +4,6 @@
   "description": "A atividade será criar uma nova rota no models de tarefas.js, fazer todas as etapas de autenticação no passo a passo acima. A Schema de tarefas será na seguinte estrutura:",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "test": "jest --watchAll"
   },
