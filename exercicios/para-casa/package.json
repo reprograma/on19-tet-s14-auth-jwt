@@ -1,16 +1,31 @@
 {
   "name": "autenticacao-jwt",
-  "version": "1.0.0",
-  "description": "A atividade da semana 14 trata-se de criar uma rota privada para fazer todas as etapas de autenticação da API integrada com o banco de dados MongoDB",
+  "version": "2.0.0",
+  "description": "V1.0.0: A atividade da semana 14 trata-se de criar uma rota privada para fazer todas as etapas de autenticação da API integrada com o banco de dados MongoDB. V2.0.0: Atualização do repositório da semana 14 com automações de testes da semana 15",
   "main": "index.js",
   "scripts": {
+    "lint": "npx eslint --fix ./testes-unitarios",
+    "test": "jest --watchAll",
     "start": "nodemon server.js"
   },
-  "keywords": ["autenticação", "JWT", "bcrypt", "Node.Js", "MongoDB"],
+  "keywords": [
+    "autenticação",
+    "JWT",
+    "bcrypt",
+    "Node.Js",
+    "MongoDB",
+    "JEST",
+    "supertest"
+  ],
   "author": "Elisângela Manuel",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "eslint": "^8.28.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "jest": "28.1.0",
+    "nodemon": "^2.0.20",
+    "supertest": "6.2.3"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",

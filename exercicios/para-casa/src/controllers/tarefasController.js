@@ -3,7 +3,8 @@ const SECRET = process.env.SECRET;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const getAll = async (req, res) => {
+
+const listaTudo = async (req, res) => {
   const authHeader = req.get("authorization");
   const token = authHeader?.split(' ')[1] ?? ("Não autorizado");
 
@@ -76,8 +77,27 @@ const login = async (req, res) => {
   };
 };
 
+const deletaPorId = async (req, res) => {
+  try {
+    const tarefaEncontrada = await tarefas.findById(req.params.id)
+
+    await tarefaEncontrada.delete()
+
+    return res.status(200).json({
+      mensagem: `Tarefa '${tarefaEncontrada.id}' deletada com sucesso!`,
+      tarefaEncontrada
+    })
+
+  } catch (err) {
+    return res.status(404).send({
+      message: err.message
+    });
+  };
+};
+
 module.exports = {
-  getAll,
+  listaTudo,
   postTarefas,
   login,
+  deletaPorId,
 }
