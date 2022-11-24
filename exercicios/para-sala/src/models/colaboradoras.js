@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
 const colaboradorasSchema = new mongoose.Schema({
-    name: { type: String },
+    name : { type : Number},
     email: { type: String },
     password: { type: String },
-    
 },{
     versionKey: false
 })
