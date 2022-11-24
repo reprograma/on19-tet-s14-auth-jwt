@@ -9,4 +9,12 @@ describe('GET /tarefas', () => {
 
         expect(response.status).toBe(200);
     })
+
+    it('should return error "page not fount"', async () => {
+        const response = await request(API)
+        .get('/tarefa/');
+
+        expect(response.status).toBe(404);
+    })
+
 });
