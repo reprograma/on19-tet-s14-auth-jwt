@@ -5,9 +5,8 @@ const bcrypt = require("bcrypt");
 
 const getAll = (req, res) => {
   const authHeader = req.get("Authorization");
-  const token = authHeader?.split(" ")[1]??("Not authorized");
-  const authHeader = req.get(`authorization`);
-  const token = authHeader?.split(" ")[1] ?? ("Não autorizado");
+  const token = authHeader?.split(" ")[1] ?? ("Not authorized");
+
   console.log(`Meu header:`, token);
 
   if(!token){
