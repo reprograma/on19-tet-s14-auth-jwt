@@ -1,3 +1,4 @@
+require('dotenv-safe').config()
 const MONGO_DB = process.env.MONGO_DB
 const mongoose = require("mongoose");
 const connect = async () => {
