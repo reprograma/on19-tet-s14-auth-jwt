@@ -3,6 +3,7 @@ const SECRET = process.env.SECRET;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
+
 const getAll = (req, res) => {
   const authHeader = req.get(`authorization`);
   const token = authHeader.split("")[1];
