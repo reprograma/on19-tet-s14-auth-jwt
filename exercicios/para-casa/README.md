@@ -10,7 +10,6 @@ A atividade será criar uma nova rota no models de tarefas.js, fazer todas as et
     dataInclusao: { type: String },
     concluido: { type: Boolean },
     nomeColaboradora: { type: String }
-    password: { type: String }
 ```
 
 Apenas a rota getAll, será necessária. O objetivo é de testar no postman trazer todas as listas de tarefas com a autenticação reconhecendo o header.
