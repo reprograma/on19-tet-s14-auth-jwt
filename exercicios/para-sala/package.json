@@ -4,8 +4,8 @@
   "description": "- Explicação do exercício: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci.\r Donec erat mauris, laoreet in tortor vel, eleifend suscipit nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit.\r Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci. Donec erat mauris, laoreet in tortor vel, eleifend suscipit nibh. \r ---",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "test": "jest --watchAll"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +19,9 @@
     "mongoose": "^6.7.2",
     "nodemon": "^2.0.20",
     "save": "^2.9.0"
+  },
+  "devDependencies": {
+    "jest": "28.1.0",
+    "supertest": "6.2.3"
   }
 }

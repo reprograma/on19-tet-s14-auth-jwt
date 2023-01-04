@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const password = 'UzMYVD7HVeKFgLLE';
+const password = "";
 
 mongoose.connect(
   `mongodb+srv://admin:${password}@cluster0.1vuycki.mongodb.net/reprograma` 
