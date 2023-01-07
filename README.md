@@ -1,54 +1,28 @@
-<h1 align="center">
-  <img src="assets/reprograma-fundos-claros.png" alt="logo reprograma" width="500">
-</h1>
+# Exercício de Casa 🏠 
 
-# Tema da Aula
+## Atividade para casa
 
-Turma Online 19 - Todas em Tech  | Back-end | Semana 14 | 2022 | Professora Tereza Oliveira
+A atividade será criar uma nova rota no models de tarefas.js, fazer todas as etapas de autenticação no passo a passo acima. A Schema de tarefas será na seguinte estrutura:
 
-### Instruções
-Antes de começar, vamos organizar nosso setup.
-* Fork esse repositório 
-* Clone o fork na sua máquina (Para isso basta abrir o seu terminal e digitar `git clone url-do-seu-repositorio-forkado`)
-* Entre na pasta do seu repositório (Para isso basta abrir o seu terminal e digitar `cd nome-do-seu-repositorio-forkado`)
-* [Add outras intrucoes caso necessario]
+```
+    id : { type : Number},
+    descricao: { type: String },
+    dataInclusao: { type: String },
+    concluido: { type: Boolean },
+    nomeColaboradora: { type: String }
+```
 
-### Resumo
-O que veremos na aula de hoje?
-* [Criptografia](#Tema1)
-Compreender a função e aplicabilidade da criptografia, Tokens e Hash.
-* [Autenticação](#Tema2)
-Conhecer o processo de autenticação, possibilitando reconhecer e reproduzir o processo nas aplicações.
-* [Autorização](#Tema3)
-Conhecer as etapas e necessidades da prática de autorização como fator de segurança na construção de aplicações.
+Apenas a rota getAll, será necessária. O objetivo é de testar no postman trazer todas as listas de tarefas com a autenticação reconhecendo o header.
 
-## Conteúdo
-### Criptografia 
-1. [História da criptografia](#topico1)
-2. [Tipos de Hash e tokens](#topico2)
+Faça o fork desse repositório e clone na sua máquina, crie uma branch, após as alterações, realize o pull request e siga o procedimento de registro de atividade. 
 
-### Autenticação 
-1. [Autenticação e Segurança](#topico3)
-     
-### Autorização
-1. [Autorização e controle de informações](#topico4)
+--------------------------------------------------------------------------------------------------------
+Terminou o exercício? Dá uma olhada nessa checklist e confere se tá tudo certinho, combinado?!
 
-***
-### Exercícios 
-* [Exercicio para sala](/exercicios/para-sala/)
-* [Exercicio para casa](/exercicios/para-casa/)
-
-### Material da aula 
-
-### Links Úteis
-- [JWT](https://www.youtube.com/watch?v=Gyq-yeot8qM)
-- [Criptografia](https://www.youtube.com/watch?v=qHFbuXpz7e4)
-- [Autenticação com Node](https://www.youtube.com/watch?v=qEBoZ8lJR3k)
-- [Artigo Criptografia](https://www.alura.com.br/artigos/autenticacao-de-forma-segura-com-criptografia)
-- [Conheça o site JWT](https://jwt.io/)
-
-
-<p align="center">
-Desenvolvido com :purple_heart:  
-</p>
-
+- [ ] Fiz o fork do repositório.
+- [ ] Clonei o fork na minha máquina (`git clone url-do-meu-fork`).
+- [ ] Resolvi o exercício.
+- [ ] Adicionei as mudanças. (`git add .` para adicionar todos os arquivos, ou `git add nome_do_arquivo` para adicionar um arquivo específico)
+- [ ] Commitei a cada mudança significativa ou na finalização do exercício (`git commit -m "Mensagem do commit"`)
+- [ ] Pushei os commits na minha branch (`git push origin nome-da-branch`)
+- [ ] Criei um Pull Request seguindo as orientaçoes que estao nesse [documento](/exercicios/para-casa/instrucoes-pull-request.md).
